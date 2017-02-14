@@ -1,16 +1,16 @@
-# kibana4
+# kibana
 
-[![Puppet Forge](http://img.shields.io/puppetforge/v/lesaux/kibana4.svg)](https://forge.puppetlabs.com/lesaux/kibana4)
-[![Build Status](http://img.shields.io/travis/lesaux/puppet-kibana4.svg)](http://travis-ci.org/lesaux/puppet-kibana4)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/lesaux/kibana.svg)](https://forge.puppetlabs.com/lesaux/kibana)
+[![Build Status](http://img.shields.io/travis/lesaux/puppet-kibana.svg)](http://travis-ci.org/lesaux/puppet-kibana)
 
 
 #### Table of Contents
 
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with kibana4](#setup)
-    * [What kibana4 affects](#what-kibana4-affects)
-    * [Beginning with kibana4](#beginning-with-kibana4)
+3. [Setup - The basics of getting started with kibana](#setup)
+    * [What kibana affects](#what-kibana-affects)
+    * [Beginning with kibana](#beginning-with-kibana)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Parameters](#parameters)
 6. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
@@ -26,25 +26,25 @@ This module assumes you have a working Elasticsearch installation and indices (u
 
 ## Setup
 
-### What kibana4 affects
+### What kibana affects
 
 * Manage the elastic.co Kibana repositories
 * Install the Kibana package
 * Modifies configuration file if needed.
 * Java installation is not managed by this module.
 
-### Beginning with kibana4
+### Beginning with kibana
 
 ```puppet
-include kibana4
+include kibana
 ```
 
 ## Usage
 
-The elastic.co packages create a kibana user and group (999:999) and they provide an init file `/etc/init.d/kibana`.  This is now the preferred installation method for kibana4.
+The elastic.co packages create a kibana user and group (999:999) and they provide an init file `/etc/init.d/kibana`.  This is now the preferred installation method for kibana.
 
 ```puppet
-include kibana4
+include kibana
 ```
 
 ## Parameters
@@ -71,7 +71,7 @@ Apt or yum repository version. Defaults to '4.5'.
 
 #### `package_repo_proxy`
 
-Whether or not to use a proxy for downloading the kibana4 package. Default is 'undef, so no proxy will be used. This is only support with yum repositories.
+Whether or not to use a proxy for downloading the kibana package. Default is 'undef, so no proxy will be used. This is only support with yum repositories.
 
 #### `service_ensure`
 
@@ -90,12 +90,12 @@ Name of the Kibana4 service. Defaults to 'kibana'.
 Simple plugin support has been added, but updating existing plugins is not yet supported.  A hash of plugins and their installation parameters is expected:
 
 ```puppet
-class { 'kibana4':
+class { 'kibana':
   ...
   plugins => {
     'elasticsearch/marvel' => {
-       kibana4_plugin_dir => '/opt/kibana/installedPlugins', # optional - this is the default
-       plugin_dest_dir    => 'marvel',                       # mandatory - plugin will be installed in ${kibana4_plugin_dir}/${plugin_dest_dir}
+       kibana_plugin_dir => '/opt/kibana/installedPlugins', # optional - this is the default
+       plugin_dest_dir    => 'marvel',                       # mandatory - plugin will be installed in ${kibana_plugin_dir}/${plugin_dest_dir}
        url                => 'http://your_custom_url',       # necessary if using arbitrary URL
        ensure             => present,                        # mandatory - either 'present' or 'absent'
     },
