@@ -7,7 +7,7 @@ class kibana::params {
   $version                       = 'latest'
   $manage_repo                   = true
   $package_repo_version          = '4.5'
-  $package_install_dir           = '/opt/kibana'
+  $package_install_dir           = '/usr/share/kibana'
   $service_ensure                = true
   $service_enable                = true
   $service_name                  = 'kibana'
